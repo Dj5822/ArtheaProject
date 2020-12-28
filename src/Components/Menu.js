@@ -9,13 +9,13 @@ class Menu extends React.Component {
       <div id="Menu">
         <h1>Arthea Project</h1>
         <Link to="/short-stories">
-          <button>Short Stories</button>
+          <button className="menuButton">Short Stories</button>
         </Link>
-        <button>Skills</button>
-        <button>Map</button>
-        <button>Items</button>
-        <button>Characters</button>
-        <button>History</button>
+        <button className="menuButton">Skills</button>
+        <button className="menuButton">Map</button>
+        <button className="menuButton">Items</button>
+        <button className="menuButton">Characters</button>
+        <button className="menuButton">History</button>
       </div>
     );
   }
