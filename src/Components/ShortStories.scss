@@ -1,5 +1,6 @@
 $background-color: rgb(24, 24, 50);
 $highlight-color: #47477f;
+$sub-highlight-color: #21224a;
 
 #ShortStories {
   display: grid;
@@ -28,7 +29,7 @@ $highlight-color: #47477f;
     outline: none;
   }
 
-  .selectedButton {
+  .selectedNavButton {
     height: 7.5vh;
     width: 20vw;
     font-size: 3vh;
@@ -67,6 +68,17 @@ $highlight-color: #47477f;
     color: white;
     background-color: transparent;
     border: none;
+    outline: none;
+  }
+
+  .selectedSideButton {
+    height: 7.5vh;
+    width: 20vw;
+    font-size: 3vh;
+    color: white;
+    background-color: $sub-highlight-color;
+    border: none;
+    border-right: 3px solid white;
     outline: none;
   }
 }
