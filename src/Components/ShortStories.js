@@ -6,28 +6,14 @@ import './ShortStories.scss';
 import StoryData from '../Data/shortStories.json';
 import {NavBar} from './SubComponents/NavBar.js';
 import {SideBar} from './SubComponents/SideBar.js';
-
-class Content extends React.Component {
-  render() {
-    let currentText = "";
-    if (this.props.currentSub !== ""){
-      currentText = StoryData[this.props.currentMain][this.props.currentSub];
-    }
-
-    return (
-      <div id="content">
-        <p>{currentText}</p>
-      </div>
-    );
-  }
-}
+import {ContentSelection} from './SubComponents/ContentSelection.js';
 
 class ShortStories extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      selectedHeader: "",
-      selectedSubHeader: ""
+      selectedHeader: Object.keys(StoryData)[0],
+      selectedSubHeader: Object.keys(StoryData[Object.keys(StoryData)[0]])[0]
     }
 
     this.navButtonPressed = this.navButtonPressed.bind(this);
@@ -37,7 +23,7 @@ class ShortStories extends React.Component {
   navButtonPressed(header) {
     this.setState({
       selectedHeader: header,
-      selectedSubHeader: ""
+      selectedSubHeader: Object.keys(StoryData[Object.keys(StoryData)[0]])[0]
     });
   }
 
@@ -54,7 +40,7 @@ class ShortStories extends React.Component {
         onButtonClick={this.navButtonPressed} />
         <SideBar data={StoryData} selectedMain={this.state.selectedHeader}
         selectedSub={this.state.selectedSubHeader} onButtonClick={this.sideButtonPressed} />
-        <Content currentMain={this.state.selectedHeader}
+        <ContentSelection data={StoryData} currentMain={this.state.selectedHeader}
         currentSub={this.state.selectedSubHeader} />
       </div>
     );
