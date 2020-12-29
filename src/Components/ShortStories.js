@@ -58,9 +58,14 @@ class SideBar extends React.Component {
 
 class Content extends React.Component {
   render() {
+    let currentText = "";
+    if (this.props.currentVolume !== ""){
+      currentText = StoryData[this.props.currentStory][this.props.currentVolume];
+    }
+
     return (
       <div id="content">
-        <p>Test</p>
+        <p>{currentText}</p>
       </div>
     );
   }
@@ -80,7 +85,8 @@ class ShortStories extends React.Component {
 
   navButtonPressed(storyTitle) {
     this.setState({
-      selectedStory: storyTitle
+      selectedStory: storyTitle,
+      selectedVolume: ""
     });
   }
 
