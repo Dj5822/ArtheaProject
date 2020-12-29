@@ -10,8 +10,8 @@ import {SideBar} from './SubComponents/SideBar.js';
 class Content extends React.Component {
   render() {
     let currentText = "";
-    if (this.props.currentVolume !== ""){
-      currentText = StoryData[this.props.currentStory][this.props.currentVolume];
+    if (this.props.currentSub !== ""){
+      currentText = StoryData[this.props.currentMain][this.props.currentSub];
     }
 
     return (
@@ -26,34 +26,36 @@ class ShortStories extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      selectedStory: "",
-      selectedVolume: ""
+      selectedHeader: "",
+      selectedSubHeader: ""
     }
 
     this.navButtonPressed = this.navButtonPressed.bind(this);
     this.sideButtonPressed = this.sideButtonPressed.bind(this);
   }
 
-  navButtonPressed(storyTitle) {
+  navButtonPressed(header) {
     this.setState({
-      selectedStory: storyTitle,
-      selectedVolume: ""
+      selectedHeader: header,
+      selectedSubHeader: ""
     });
   }
 
-  sideButtonPressed(volumeTitle) {
+  sideButtonPressed(subHeader) {
     this.setState({
-      selectedVolume: volumeTitle
+      selectedSubHeader: subHeader
     });
   }
 
   render() {
     return (
       <div id="ShortStories">
-        <NavBar data={StoryData} selectedButton={this.state.selectedStory} onButtonClick={this.navButtonPressed} />
-        <SideBar data={StoryData} selectedMain={this.state.selectedStory} selectedSub={this.state.selectedVolume}
-        onButtonClick={this.sideButtonPressed} />
-        <Content currentStory={this.state.selectedStory} currentVolume={this.state.selectedVolume} />
+        <NavBar data={StoryData} selectedButton={this.state.selectedHeader}
+        onButtonClick={this.navButtonPressed} />
+        <SideBar data={StoryData} selectedMain={this.state.selectedHeader}
+        selectedSub={this.state.selectedSubHeader} onButtonClick={this.sideButtonPressed} />
+        <Content currentMain={this.state.selectedHeader}
+        currentSub={this.state.selectedSubHeader} />
       </div>
     );
   }
