@@ -2,9 +2,10 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 
 import './ShortStories.scss';
+
 import StoryData from '../Data/shortStories.json';
-import {NavBar} from './NavBar.js';
-import {SideBar} from './SideBar.js';
+import {NavBar} from './SubComponents/NavBar.js';
+import {SideBar} from './SubComponents/SideBar.js';
 
 class Content extends React.Component {
   render() {
