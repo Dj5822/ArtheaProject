@@ -2,6 +2,7 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 
 import './ShortStories.scss';
+import StoryData from '../Data/shortStories.json';
 
 class NavBar extends React.Component {
   constructor(props) {
@@ -21,11 +22,15 @@ class NavBar extends React.Component {
   }
 
   render() {
-    let buttonClassList = new Array(2).fill("navButton");
+    let storyButtons = [];
 
-    for (var i=0; i<buttonClassList.length; i++){
+    for (let i=0; i<Object.keys(StoryData).length; i++){
+      let buttonId = "button"+(i+1);
       if (this.state.selectedNavButton === i+1) {
-        buttonClassList[i] = "selectedNavButton";
+        storyButtons.push(<button key={buttonId} className="selectedNavButton" onClick={() => this.navButtonPressed(i+1)}>{Object.keys(StoryData)[i]}</button>);
+      }
+      else {
+        storyButtons.push(<button key={buttonId} className="navButton" onClick={() => this.navButtonPressed(i+1)}>{Object.keys(StoryData)[i]}</button>);
       }
     }
 
@@ -34,8 +39,7 @@ class NavBar extends React.Component {
         <Link to="/">
           <button id="returnButton" className="navButton">&lt;</button>
         </Link>
-        <button id="button1" className={buttonClassList[0]} onClick={() => this.navButtonPressed(1)}>Story 1</button>
-        <button id="button2" className={buttonClassList[1]} onClick={() => this.navButtonPressed(2)}>Story 2</button>
+        {storyButtons}
       </div>
     );
   }
