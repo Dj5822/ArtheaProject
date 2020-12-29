@@ -1,0 +1,45 @@
+$background-color: rgb(24, 24, 50);
+$highlight-color: #47477f;
+$sub-highlight-color: #21224a;
+
+#navbar {
+  grid-column: 1 / span 2;
+
+  background-color: $background-color;
+
+  display: flex;
+  flex-direction: row;
+
+  border: none;
+  border-bottom: 3px solid $highlight-color;
+
+  .navButton {
+    height: 7.5vh;
+    width: 20vw;
+    font-size: 3vh;
+    color: white;
+    background-color: transparent;
+    border: none;
+    outline: none;
+  }
+
+  .selectedNavButton {
+    height: 7.5vh;
+    width: 20vw;
+    font-size: 3vh;
+    color: white;
+    background-color: transparent;
+    border: none;
+    border-bottom: 5px solid white;
+    outline: none;
+  }
+
+  #returnButton {
+    width: 7vw;
+
+    margin-left: 2vw;
+    padding-left: 3vw;
+    padding-right: 1vw;
+    font-size: 7.5vh;
+  }
+}
