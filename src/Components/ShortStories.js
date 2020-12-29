@@ -5,32 +5,18 @@ import './ShortStories.scss';
 import StoryData from '../Data/shortStories.json';
 
 class NavBar extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      selectedNavButton: 0
-    }
-
-    this.navButtonPressed = this.navButtonPressed.bind(this);
-  }
-
-  navButtonPressed(num) {
-    this.setState({
-      selectedNavButton: num
-    });
-  }
-
   render() {
+    /*
+      Renders buttons based on the number of stories.
+    */
     let storyButtons = [];
-
     for (let i=0; i<Object.keys(StoryData).length; i++){
-      let buttonId = "button"+(i+1);
-      if (this.state.selectedNavButton === i+1) {
-        storyButtons.push(<button key={buttonId} className="selectedNavButton" onClick={() => this.navButtonPressed(i+1)}>{Object.keys(StoryData)[i]}</button>);
+      let buttonKey = Object.keys(StoryData)[i]+"button";
+      if (this.props.currentStory === Object.keys(StoryData)[i]) {
+        storyButtons.push(<button key={buttonKey} className="selectedNavButton" onClick={() => this.props.onButtonClick(Object.keys(StoryData)[i])}>{Object.keys(StoryData)[i]}</button>);
       }
       else {
-        storyButtons.push(<button key={buttonId} className="navButton" onClick={() => this.navButtonPressed(i+1)}>{Object.keys(StoryData)[i]}</button>);
+        storyButtons.push(<button key={buttonKey} className="navButton" onClick={() => this.props.onButtonClick(Object.keys(StoryData)[i])}>{Object.keys(StoryData)[i]}</button>);
       }
     }
 
@@ -46,36 +32,25 @@ class NavBar extends React.Component {
 }
 
 class SideBar extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      selectedSideButton: 0
-    }
-
-    this.sideButtonPressed = this.sideButtonPressed.bind(this);
-  }
-
-  sideButtonPressed(num) {
-    this.setState({
-      selectedSideButton: num
-    });
-  }
-
   render() {
-    let buttonClassList = new Array(3).fill("sideButton");
-
-    for (var i=0; i<buttonClassList.length; i++){
-      if (this.state.selectedSideButton === i+1) {
-        buttonClassList[i] = "selectedSideButton";
+    let volumeButtons = [];
+    if (this.props.currentStory !== ""){
+      for (let i=0; i<Object.keys(StoryData[this.props.currentStory]).length; i++){
+        let buttonKey = Object.keys(StoryData[this.props.currentStory])[i]+"button";
+        if (this.props.currentVolume === Object.keys(StoryData[this.props.currentStory])[i]) {
+          volumeButtons.push(<button key={buttonKey} className="selectedSideButton"
+          onClick={() => this.props.onButtonClick(Object.keys(StoryData[this.props.currentStory])[i])}>{Object.keys(StoryData[this.props.currentStory])[i]}</button>);
+        }
+        else {
+          volumeButtons.push(<button key={buttonKey} className="sideButton"
+          onClick={() => this.props.onButtonClick(Object.keys(StoryData[this.props.currentStory])[i])}>{Object.keys(StoryData[this.props.currentStory])[i]}</button>);
+        }
       }
     }
 
     return (
       <div id="sidebar">
-        <button className={buttonClassList[0]} onClick={() => this.sideButtonPressed(1)}>Chapter 1</button>
-        <button className={buttonClassList[1]} onClick={() => this.sideButtonPressed(2)}>Chapter 2</button>
-        <button className={buttonClassList[2]} onClick={() => this.sideButtonPressed(3)}>Chapter 3</button>
+        {volumeButtons}
       </div>
     );
   }
@@ -92,12 +67,36 @@ class Content extends React.Component {
 }
 
 class ShortStories extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      selectedStory: "",
+      selectedVolume: ""
+    }
+
+    this.navButtonPressed = this.navButtonPressed.bind(this);
+    this.sideButtonPressed = this.sideButtonPressed.bind(this);
+  }
+
+  navButtonPressed(storyTitle) {
+    this.setState({
+      selectedStory: storyTitle
+    });
+  }
+
+  sideButtonPressed(volumeTitle) {
+    this.setState({
+      selectedVolume: volumeTitle
+    });
+  }
+
   render() {
     return (
       <div id="ShortStories">
-        <NavBar />
-        <SideBar />
-        <Content />
+        <NavBar currentStory={this.state.selectedStory} onButtonClick={this.navButtonPressed} />
+        <SideBar currentStory={this.state.selectedStory} currentVolume={this.state.selectedVolume}
+        onButtonClick={this.sideButtonPressed} />
+        <Content currentStory={this.state.selectedStory} currentVolume={this.state.selectedVolume} />
       </div>
     );
   }

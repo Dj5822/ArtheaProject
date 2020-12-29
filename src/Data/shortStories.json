@@ -1,9 +1,11 @@
 {
   "story1": {
-    "chapter1": "Testing..."
+    "chapter1": "Testing...1",
+    "chapter2": "Testing...2",
+    "chapter3": "Testing...3"
   },
 
   "story2": {
-    "chapter1": "Testing..."
+    "chapter1": "Testing...1"
   }
 }
