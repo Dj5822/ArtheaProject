@@ -1,0 +1,11 @@
+#content {
+  display: grid;
+  grid-template-columns: 17.5vw 17.5vw 17.5vw 17.5vw;
+  grid-template-rows: 20vh 20vh 20vh 20vh;
+  column-gap: 2vw;
+  row-gap: 1vh;
+}
+
+.selectionButton {
+  font-size: 3vh;
+}
