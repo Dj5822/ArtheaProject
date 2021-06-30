@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 import { Menu } from './Components/Menu.js';
 import { IndexPage } from './Components/IndexPage.js';
+import StoryData from './Data/shortStories.json';
 
 function App() {
   return (
@@ -10,22 +11,22 @@ function App() {
       <div>
         <Switch>
           <Route path="/short-stories">
-            <IndexPage />
+            <IndexPage data={StoryData} />
           </Route>
           <Route path="/skills">
-            <IndexPage />
+            <IndexPage data={StoryData} />
           </Route>
           <Route path="/map">
-            <IndexPage />
+            <IndexPage data={StoryData} />
           </Route>
           <Route path="/items">
-            <IndexPage />
+            <IndexPage data={StoryData} />
           </Route>
           <Route path="/characters">
-            <IndexPage />
+            <IndexPage data={StoryData} />
           </Route>
           <Route path="/history">
-            <IndexPage />
+            <IndexPage data={StoryData} />
           </Route>
           <Route path="/">
             <Menu />

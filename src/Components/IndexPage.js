@@ -2,7 +2,6 @@ import React from 'react';
 
 import './IndexPage.scss';
 
-import StoryData from '../Data/shortStories.json';
 import {NavBar} from './SubComponents/NavBar.js';
 import {SideBar} from './SubComponents/SideBar.js';
 import {ContentSelection} from './SubComponents/ContentSelection.js';
@@ -11,8 +10,8 @@ class IndexPage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      selectedHeader: Object.keys(StoryData)[0],
-      selectedSubHeader: Object.keys(StoryData[Object.keys(StoryData)[0]])[0]
+      selectedHeader: Object.keys(this.props.data)[0],
+      selectedSubHeader: Object.keys(this.props.data[Object.keys(this.props.data)[0]])[0]
     }
 
     this.navButtonPressed = this.navButtonPressed.bind(this);
@@ -23,7 +22,7 @@ class IndexPage extends React.Component {
   navButtonPressed(header) {
     this.setState({
       selectedHeader: header,
-      selectedSubHeader: Object.keys(StoryData[Object.keys(StoryData)[0]])[0]
+      selectedSubHeader: Object.keys(this.props.data[Object.keys(this.props.data)[0]])[0]
     });
   }
 
@@ -36,14 +35,14 @@ class IndexPage extends React.Component {
 
   render() {
     // data is currently set to story data.
-    let pageData = StoryData;
+    let data = this.props.data;
     return (
       <div id="IndexPage">
-        <NavBar data={pageData} selectedButton={this.state.selectedHeader}
+        <NavBar data={data} selectedButton={this.state.selectedHeader}
         onButtonClick={this.navButtonPressed} />
-        <SideBar data={pageData} selectedMain={this.state.selectedHeader}
+        <SideBar data={data} selectedMain={this.state.selectedHeader}
         selectedSub={this.state.selectedSubHeader} onButtonClick={this.sideButtonPressed} />
-        <ContentSelection data={pageData} currentMain={this.state.selectedHeader}
+        <ContentSelection data={data} currentMain={this.state.selectedHeader}
         currentSub={this.state.selectedSubHeader} />
       </div>
     );
