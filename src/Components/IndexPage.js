@@ -1,13 +1,13 @@
 import React from 'react';
 
-import './ShortStories.scss';
+import './IndexPage.scss';
 
 import StoryData from '../Data/shortStories.json';
 import {NavBar} from './SubComponents/NavBar.js';
 import {SideBar} from './SubComponents/SideBar.js';
 import {ContentSelection} from './SubComponents/ContentSelection.js';
 
-class ShortStories extends React.Component {
+class IndexPage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -34,7 +34,7 @@ class ShortStories extends React.Component {
 
   render() {
     return (
-      <div id="ShortStories">
+      <div id="IndexPage">
         <NavBar data={StoryData} selectedButton={this.state.selectedHeader}
         onButtonClick={this.navButtonPressed} />
         <SideBar data={StoryData} selectedMain={this.state.selectedHeader}
@@ -46,4 +46,4 @@ class ShortStories extends React.Component {
   }
 }
 
-export { ShortStories };
+export { IndexPage };

@@ -12,11 +12,21 @@ class Menu extends React.Component {
         <Link to="/short-stories">
           <button className="menuButton">Short Stories</button>
         </Link>
-        <button className="menuButton">Skills</button>
-        <button className="menuButton">Map</button>
-        <button className="menuButton">Items</button>
-        <button className="menuButton">Characters</button>
-        <button className="menuButton">History</button>
+        <Link to="/skills">
+          <button className="menuButton">Skills</button>
+        </Link>
+        <Link to="/map">
+          <button className="menuButton">Map</button>
+        </Link>
+        <Link to="/items">
+          <button className="menuButton">Items</button>
+        </Link>
+        <Link to="/characters">
+          <button className="menuButton">Characters</button>
+        </Link>
+        <Link to="/history">
+          <button className="menuButton">History</button>
+        </Link>
       </div>
     );
   }
