@@ -4,9 +4,9 @@ import './IndexPage.scss';
 
 import {NavBar} from './SubComponents/NavBar.js';
 import {SideBar} from './SubComponents/SideBar.js';
-import {ContentSelection} from './SubComponents/ContentSelection.js';
+import {InfoPane} from './SubComponents/InfoPane.js';
 
-class IndexPage extends React.Component {
+class CharacterPage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -37,16 +37,16 @@ class IndexPage extends React.Component {
     // data is currently set to story data.
     let data = this.props.data;
     return (
-      <div id="IndexPage">
+      <div id="CharacterPage">
         <NavBar data={data} selectedButton={this.state.selectedHeader}
         onButtonClick={this.navButtonPressed} />
         <SideBar data={data} selectedMain={this.state.selectedHeader}
         selectedSub={this.state.selectedSubHeader} onButtonClick={this.sideButtonPressed} />
-        <ContentSelection data={data} currentMain={this.state.selectedHeader}
+        <InfoPane data={data} currentMain={this.state.selectedHeader}
         currentSub={this.state.selectedSubHeader} />
       </div>
     );
   }
 }
 
-export { IndexPage };
+export { CharacterPage };

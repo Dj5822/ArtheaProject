@@ -8,7 +8,23 @@ $sub-highlight-color: #21224a;
   grid-template-rows: 7.5vh 92.5vh;
 }
 
+#CharacterPage {
+  display: grid;
+  grid-template-columns: 20vw 80vw;
+  grid-template-rows: 7.5vh 92.5vh;
+}
+
 #content {
+  background-color: $background-color;
+  color: white;
+
+  width: 76vw;
+  height: 90.5vh;
+
+  padding: 1vh 2vw;
+}
+
+#charInfo {
   background-color: $background-color;
   color: white;
 
