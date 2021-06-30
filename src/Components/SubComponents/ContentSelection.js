@@ -11,7 +11,7 @@ class ContentSelection extends React.Component {
 
     for (var i=0; i<Object.keys(selectedStory).length; i++) {
       buttonsList.push(
-        <button class="selectionButton">
+        <button className="selectionButton">
           {Object.keys(selectedStory)[i]}
         </button>);
     }
