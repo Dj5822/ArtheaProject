@@ -19,6 +19,7 @@ class IndexPage extends React.Component {
     this.sideButtonPressed = this.sideButtonPressed.bind(this);
   }
 
+  // shows data pertaining to the selected navbutton button.
   navButtonPressed(header) {
     this.setState({
       selectedHeader: header,
@@ -26,6 +27,7 @@ class IndexPage extends React.Component {
     });
   }
 
+  // shows data pertaining to the selected side button.
   sideButtonPressed(subHeader) {
     this.setState({
       selectedSubHeader: subHeader
@@ -33,13 +35,15 @@ class IndexPage extends React.Component {
   }
 
   render() {
+    // data is currently set to story data.
+    let pageData = StoryData;
     return (
       <div id="IndexPage">
-        <NavBar data={StoryData} selectedButton={this.state.selectedHeader}
+        <NavBar data={pageData} selectedButton={this.state.selectedHeader}
         onButtonClick={this.navButtonPressed} />
-        <SideBar data={StoryData} selectedMain={this.state.selectedHeader}
+        <SideBar data={pageData} selectedMain={this.state.selectedHeader}
         selectedSub={this.state.selectedSubHeader} onButtonClick={this.sideButtonPressed} />
-        <ContentSelection data={StoryData} currentMain={this.state.selectedHeader}
+        <ContentSelection data={pageData} currentMain={this.state.selectedHeader}
         currentSub={this.state.selectedSubHeader} />
       </div>
     );
